@@ -2,6 +2,7 @@ package com.Apothic0n.Astrological.core.objects;
 
 import com.Apothic0n.Astrological.Astrological;
 import com.Apothic0n.Astrological.core.sounds.AstrologicalSoundTypes;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.*;
@@ -86,14 +87,14 @@ public final class AstrologicalBlocks {
 
     public static void fixBlockRenderLayers() {
         CryoFireBlock.bootStrap();
-        ItemBlockRenderTypes.setRenderLayer(SLEEP.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(OCHRE_SELENITE.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(VERDANT_SELENITE.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(PEARLESCENT_SELENITE.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(SLEEP.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(OCHRE_SELENITE.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(VERDANT_SELENITE.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(PEARLESCENT_SELENITE.get(), RenderType.translucent());
 
-        ItemBlockRenderTypes.setRenderLayer(TENDRILS.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(CRYING_DUCT.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(CRYO_FIRE.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(TENDRILS.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(CRYING_DUCT.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(CRYO_FIRE.get(), RenderType.cutout());
     }
 
     public static List<RegistryObject<Block>> blocksWithStairsSlabsAndWalls = List.of(

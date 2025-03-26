@@ -155,7 +155,7 @@ public final class MaskingSource implements SpriteSource
                 List<FrameInfo> frames = collectFrames(source, srcSize, sourceAnim);
                 // Copy pixel data to the output image
                 buildOutputImage(frames, source, mask, imageOut, resultSize);
-                return new SpriteContents(outLoc, resultSize, imageOut, sourceAnim, null);
+                return new SpriteContents(outLoc, resultSize, imageOut, sourceAnim);
             }
             catch (Exception e)
             {

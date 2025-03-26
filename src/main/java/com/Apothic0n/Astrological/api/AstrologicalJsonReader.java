@@ -89,4 +89,7 @@ public class AstrologicalJsonReader {
         gson.toJson(data, writer);
         writer.close();
     }
+    public static void register() {
+        register();
+    }
 }

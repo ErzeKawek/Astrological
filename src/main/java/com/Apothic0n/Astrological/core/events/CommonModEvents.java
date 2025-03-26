@@ -8,6 +8,7 @@ import commoble.databuddy.datagen.SimpleModel;
 import net.minecraft.Util;
 import net.minecraft.client.resources.model.BlockModelRotation;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
@@ -282,7 +283,7 @@ public class CommonModEvents {
                 ResourceLocation tempSlabBlock = new ResourceLocation("block/failure");
                 ResourceLocation tempSlabBlockTop = new ResourceLocation("block/failure_top");
                 for (int o = 0; o < AstrologicalBlocks.slabBlocks.size(); o++) {
-                    Map<RegistryObject<Block>, RegistryObject<Block>> slabBlockMap = AstrologicalBlocks.slabBlocks.get(o);
+                    Map<Registry<Block>, Registry<Block>> slabBlockMap = AstrologicalBlocks.slabBlocks.get(o);
                     if (slabBlockMap.containsKey(baseBlockBlock)) {
                         tempSlabState = new ResourceLocation(Astrological.MODID, slabBlockMap.get(baseBlockBlock).getId().toString().substring(13));
                         tempSlabBlock = new ResourceLocation(Astrological.MODID, "block/" + slabBlockMap.get(baseBlockBlock).getId().toString().substring(13));

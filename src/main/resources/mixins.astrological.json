@@ -13,7 +13,8 @@
     "ChorusPlantBlockMixin",
     "ChorusPlantFeatureMixin",
     "EndGatewayFeatureMixin",
-    "RenderTypeMixin"
+    "RenderTypeMixin",
+    "WallBlockMixin"
   ],
   "client": [
     "DimensionSpecialEffectsMixin",

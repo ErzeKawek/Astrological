@@ -17,7 +17,7 @@
     "environment": "*",
     "entrypoints": {
       "main": [
-        "com.Apothic0n.Astrological"
+        "com.Apothic0n.Astrological.Astrological"
       ],
       "client": [
       ]
@@ -27,7 +27,7 @@
         "config": "mixins.astrological.json"
       }
     ],
-
+  "accessWidener": "astrological.accesswidener",
     "depends": {
       "fabricloader": ">=0.14.21",
       "minecraft": "~1.20.1",

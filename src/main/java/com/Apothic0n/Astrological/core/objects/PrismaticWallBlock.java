@@ -2,6 +2,8 @@ package com.Apothic0n.Astrological.core.objects;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -19,11 +21,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 
@@ -64,7 +64,7 @@ public class PrismaticWallBlock extends WallBlock implements EntityBlock {
         return AstrologicalBlockEntities.SELENITE_WALL.get().create(blockPos, blockState);
     }
 
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public float getFriction() {
         Level level = Minecraft.getInstance().level;
         float newFriction = this.friction; //night
@@ -83,13 +83,9 @@ public class PrismaticWallBlock extends WallBlock implements EntityBlock {
     }
 
     private void fixShapeMaps() {
-        Map<BlockState, VoxelShape> shapeByIndex = ObfuscationReflectionHelper.getPrivateValue(WallBlock.class, this, "f_57955_");
-        shapeByIndex = fixShapeMap(shapeByIndex);
-        ObfuscationReflectionHelper.setPrivateValue(WallBlock.class, this, shapeByIndex, "f_57955_");
-
-        Map<BlockState, VoxelShape> collisionShapeByIndex = ObfuscationReflectionHelper.getPrivateValue(WallBlock.class, this, "f_57956_");
-        collisionShapeByIndex = fixShapeMap(collisionShapeByIndex);
-        ObfuscationReflectionHelper.setPrivateValue(WallBlock.class, this, collisionShapeByIndex, "f_57956_");
+        WallBlock block = (WallBlock) PrismaticWallBlock;
+        block.shapeByIndex = fixShapeMap(block.shapeByIndex);
+        block.collisionShapeByIndex = fixShapeMap(block.collisionShapeByIndex);
     }
 
     private static Map<BlockState, VoxelShape> fixShapeMap(Map<BlockState, VoxelShape> map) {

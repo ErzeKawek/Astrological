@@ -8,6 +8,7 @@ import com.Apothic0n.Astrological.core.objects.AstrologicalBlockEntities;
 import com.Apothic0n.Astrological.core.objects.AstrologicalBlocks;
 import com.Apothic0n.Astrological.core.objects.AstrologicalItems;
 import com.google.common.collect.ImmutableList;
+import net.fabricmc.api.ModInitializer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.Blocks;
@@ -18,17 +19,16 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-@Mod(Astrological.MODID)
-public class Astrological {
+public class Astrological implements ModInitializer {
     public static final String MODID = "astrological";
 
-    public Astrological() throws Exception {
+    public void onInitialize() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::commonSetup);
 
-        AstrologicalJsonReader.main();
-        AstrologicalDensityFunctions.register(eventBus);
+        AstrologicalJsonReader.register();
+        AstrologicalDensityFunctions.register();
         AstrologicalBlocks.BLOCKS.register(eventBus);
         AstrologicalBlockEntities.BLOCK_ENTITIES.register(eventBus);
         AstrologicalBlocks.generateStairsSlabsWalls();
